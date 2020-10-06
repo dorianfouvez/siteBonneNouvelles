@@ -40,7 +40,7 @@ function prepareController($controllerName){
 
 switch($action) {
 		case 'genese':
-			$controller = prepareController('GeneseController');
+			//$controller = prepareController('GeneseController');
             break;
 		case 'livres':
 			require_once('controllers/LivresController.php');	
