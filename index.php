@@ -1,35 +1,32 @@
 <?php
-	# Prise du temps actuel au début du script
 	$time_start = microtime(true);
 
-	# Variables globales du site
-	define('CHEMIN_VUES','views/');
-    define('EMAIL','jeanluc.collinet@ipl.be');
+	# Site Global Variables
     define('CHEMIN_CONTROLLERS','controllers/');
+    define('PATH_MODELS','models/');
+	define('PATH_VIEWS','views/');
+	define('PATH_CSS',PATH_VIEWS . 'css/');
+	define('PATH_IMAGES',PATH_VIEWS . 'images/');
+	define('PATH_SCRIPTS',PATH_VIEWS . 'scripts/');
+    define('EMAIL','jeanluc.collinet@ipl.be');
 	$date = date("j/m/Y");
 	
-	# Require des classes automatisé
+	# Autoloading class
 	function chargerClasse($classe) {
 		require 'models/' . $classe . '.class.php';
 	}
 	spl_autoload_register('chargerClasse'); 
 
-	# Ecrire ici le header de toutes pages HTML
-	require_once(CHEMIN_VUES . 'header.php');
-	
-	# Ecrire ici le menu du site de toutes pages HTML
-	require_once(CHEMIN_VUES . 'menu.php');
+	require_once(PATH_VIEWS . 'header.php');
+	require_once(PATH_VIEWS . 'menu.php');
 
-	# Tester si une variable GET 'action' est précisée dans l'URL index.php?action=...
-	$action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
-	# Quelle action est demandée ?
+    function prepareController($controllerName){
+        require_once(CHEMIN_CONTROLLERS . $controllerName . '.php');
+        return new $controllerName();
+    }
 
-function prepareController($controllerName){
-    require_once(CHEMIN_CONTROLLERS . $controllerName . '.php');
-    return new $controllerName();
-}
-
-switch($action) {
+    $action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
+    switch($action) {
 		case 'genese':
 			$controller = prepareController('GeneseController');
             break;
@@ -43,10 +40,8 @@ switch($action) {
             $controller = prepareController('AccueilController');
 			break;
 	}
-	# Exécution du contrôleur correspondant à l'action demandée
 	$controller->run();
-	
-	# Ecrire ici le footer du site de toutes pages HTML
-	require_once(CHEMIN_VUES . 'footer.php');
+
+	require_once(PATH_VIEWS . 'footer.php');
 
 ?>

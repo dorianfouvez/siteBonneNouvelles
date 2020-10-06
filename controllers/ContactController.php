@@ -32,6 +32,6 @@ class ContactController{
 		}
 		
 		# Ecrire ici la vue
-		require_once(CHEMIN_VUES . 'contact.php');
+		require_once(PATH_VIEWS . 'contact.php');
 	}
 } 

@@ -15,6 +15,6 @@ class LivresController{
 		
 		# Ecrire ici la vue
 		# $tablivres contient un tableau d'objets de la classe Livre
-		require_once(CHEMIN_VUES . 'livres.php');
+		require_once(PATH_VIEWS . 'livres.php');
 	}
 } 

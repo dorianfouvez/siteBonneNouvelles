@@ -18,5 +18,5 @@
 		<?php } ?>
 		</tbody>
 	</table>
-	<img src="<?php echo CHEMIN_VUES ?>images/big-w3cvalidtemplate.png" alt="W3C Valid" >
+	<img src="<?php echo PATH_VIEWS ?>images/big-w3cvalidtemplate.png" alt="W3C Valid" >
 </div><!-- #contenu -->

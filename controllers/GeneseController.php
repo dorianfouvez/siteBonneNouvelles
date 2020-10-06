@@ -17,7 +17,7 @@ class GeneseController{
 		$cphp[2015] = 'PHP OO structuré en MVC avec PDO OO accédant à MySql comme base de données';
 
 		# Un contrôleur se termine en écrivant une vue
-		require_once(CHEMIN_VUES . 'genese.php');
+		require_once(PATH_VIEWS . 'genese.php');
 	}
 	
 	
