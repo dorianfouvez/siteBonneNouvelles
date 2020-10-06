@@ -5,6 +5,7 @@
 	# Variables globales du site
 	define('CHEMIN_VUES','views/');
     define('EMAIL','jeanluc.collinet@ipl.be');
+    define('CHEMIN_CONTROLLERS','controllers/');
 	$date = date("j/m/Y");
 	
 	# Require des classes automatisé
@@ -22,11 +23,20 @@
 	# Tester si une variable GET 'action' est précisée dans l'URL index.php?action=...
 	$action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
 	# Quelle action est demandée ?
-	switch($action) {
+/**
+ * @return GeneseController
+ */
+function GeneseController()
+{
+    require_once(CHEMIN_CONTROLLERS . 'GeneseController.php');
+    $controller = new GeneseController();
+    return $controller;
+}
+
+switch($action) {
 		case 'genese':
-			require_once('controllers/GeneseController.php');	
-			$controller = new GeneseController();
-			break;
+			$controller = GeneseController();
+            break;
 		case 'livres':
 			require_once('controllers/LivresController.php');	
 			$controller = new LivresController();
