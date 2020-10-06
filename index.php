@@ -33,10 +33,10 @@ function GeneseController()
     return $controller;
 }
 
-function prepareController($controllerName){
+/*function prepareController($controllerName){
     require_once(CHEMIN_CONTROLLERS . $controllerName . '.php');
     return $controller = new $controllerName();
-}
+}*/
 
 switch($action) {
 		case 'genese':
