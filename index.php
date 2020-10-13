@@ -35,7 +35,9 @@
 			break;
 		case 'contact':
             $controller = prepareController('ContactController');
-			break;	
+			break;
+		case 'login':
+			$controller = prepareController('LoginController');	
 		default:
             $controller = prepareController('AccueilController');
 			break;
